@@ -17,15 +17,47 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    System.out.print("Nombre del paciente: ");
-                    String nombre = scanner.nextLine();
-                    System.out.print("Fecha de la cita (AAAA-MM-DD): ");
-                    String fecha = scanner.nextLine();
-                    System.out.print("Hora de la cita (HH:MM): ");
-                    String hora = scanner.nextLine();
-                    System.out.print("Motivo de la cita: ");
-                    String motivo = scanner.nextLine();
+                    // Validar nombre
+                    String nombre;
+                    do {
+                        System.out.println("Nombre del paciente: ");
+                        nombre = scanner.nextLine();
+                        if (!Validaciones.validarTexto(nombre)) {
+                        System.out.println("Error: El nombre no puede estar vacío.");
+                        }
+                    } while (!Validaciones.validarTexto(nombre));
 
+                    // Validar fecha
+                    String fecha;
+                    do {
+                        System.out.print("Fecha de la cita (AAAA-MM-DD): ");
+                        fecha = scanner.nextLine();
+                        if (!Validaciones.validarFecha(fecha)) {
+                            System.out.println("Error: La fecha debe estar en el formato AAAA-MM-DD y ser válida.");
+                        }
+                    } while (!Validaciones.validarFecha(fecha));
+
+                    // Validar Hora
+                    String hora;
+                    do {
+                        System.out.print("Hora de la cita (HH:MM): ");
+                        hora = scanner.nextLine();
+                        if (!Validaciones.validarHora(hora)) {
+                            System.out.println("Error: La hora debe estar en el formato HH:MM y ser válida.");
+                        }
+                    } while (!Validaciones.validarHora(hora));
+
+                    // Validar Motivo
+                    String motivo;
+                    do {
+                        System.out.print("Motivo de la cita: ");
+                        motivo = scanner.nextLine();
+                        if (!Validaciones.validarTexto(motivo)) {
+                            System.out.println("Error: El motivo no puede estar vacío.");
+                        }
+                    } while (!Validaciones.validarTexto(motivo));
+
+                    // Crear y guardar la cita
                     Cita nuevaCita = new Cita(nombre, fecha, hora, motivo);
                     citaDAO.insertarCita(nuevaCita);
                     System.out.println("Cita agendada con éxito!");
