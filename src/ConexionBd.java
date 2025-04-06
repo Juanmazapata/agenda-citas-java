@@ -2,7 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
+//Credenciales Base de Datos. Por favor no hackear xD xD
 public class ConexionBd {
     private static final String URL = "jdbc:mysql://srv1770.hstgr.io:3306/u441839449_nutricion_db";
     private static final String USER = "u441839449_nutricion_db";
